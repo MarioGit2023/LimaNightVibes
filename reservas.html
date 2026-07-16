@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Online | Lima Night Vibes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@700&display=swap');
+      
+      body {
+        font-family: Inter, sans-serif;
+        background: linear-gradient(135deg, #0b0014 0%, #1a0033 50%, #0b0014 100%);
+        min-height: 100vh;
+      }
+
+      /* Efecto de fondo animado */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 20% 50%, rgba(192, 38, 211, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .service-card {
+        position: relative;
+        background: linear-gradient(135deg, rgba(20, 0, 40, 0.6), rgba(88, 28, 135, 0.2));
+        border: 1px solid rgba(192, 38, 211, 0.3);
+        border-radius: 2xl;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+        z-index: 1;
+      }
+
+      .service-card:hover::before {
+        left: 100%;
+      }
+
+      .service-card:hover {
+        border-color: rgba(192, 38, 211, 0.8);
+        box-shadow: 0 25px 60px rgba(192, 38, 211, 0.25);
+        transform: translateY(-12px);
+      }
+
+      .service-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .service-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(192, 38, 211, 0) 0%, rgba(192, 38, 211, 0.1) 100%);
+        z-index: 1;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.12) rotate(1deg);
+      }
+
+      .service-header {
+        padding: 2.5rem 2rem 1rem;
+        flex: 1;
+        position: relative;
+        z-index: 2;
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .service-title {
+        font-size: 1.75rem;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 0.75rem;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: -0.5px;
+      }
+
+      .service-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.25rem;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      }
+
+      .service-description {
+        color: #d1d5db;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-price-section {
+        border-top: 1px solid rgba(192, 38, 211, 0.2);
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(192, 38, 211, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+        position: relative;
+        z-index: 2;
+      }
+
+      .price-label {
+        font-size: 0.75rem;
+        color: #d8b4fe;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        font-family: 'Playfair Display', serif;
+      }
+
+      .price-subtext {
+        font-size: 0.9rem;
+        color: #c084fc;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      .service-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, #c026d3 0%, #d946ef 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(192, 38, 211, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .service-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(192, 38, 211, 0.5);
+      }
+
+      .service-button:active {
+        transform: translateY(-1px);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .service-title {
+          font-size: 1.5rem;
+        }
+
+        .price {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="text-white">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-lg z-50 border-b border-fuchsia-700 shadow-xl">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-5">
+        <a href="index.html" class="font-black text-2xl tracking-wide flex items-center gap-2">
+          <span class="text-3xl">🌃</span> LIMA NIGHT VIBES
+        </a>
+        <a href="index.html" class="text-fuchsia-400 hover:text-white transition flex items-center gap-2 font-semibold">
+          <i class="fa-solid fa-arrow-left"></i> Volver
+        </a>
+      </div>
+    </nav>
+
+    <!-- TITULO Y BREADCRUMB -->
+    <section class="pt-40 pb-16">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex items-center gap-2 mb-8 text-purple-400">
+          <a href="index.html" class="hover:text-fuchsia-400 transition font-semibold">Inicio</a>
+          <i class="fa-solid fa-chevron-right text-sm"></i>
+          <span class="text-fuchsia-400 font-semibold">Servicios</span>
+        </div>
+        <h1 class="text-6xl md:text-7xl font-black mb-4 font-playfair" style="font-family: 'Playfair Display', serif;">Reservas Online</h1>
+        <p class="text-gray-300 text-lg md:text-xl max-w-2xl">✨ Elige tu experiencia nocturna favorita y vive la mejor noche de tu vida en Lima</p>
+      </div>
+    </section>
+
+    <!-- SERVICIOS GRID -->
+    <section class="pb-24">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="services-grid">
+          
+          <!-- SERVICIO 1: TOUR NOCTURNO -->
+          <div class="service-card">
+            <div class="service-image">
+              <img src="Imagenes/GrupoHablando.jpg" alt="Tour Nocturno">
+            </div>
+            <div class="service-header">
+              <h2 class="service-title">Tour Nocturno</h2>
+              <span class="service-status">✓ Finalizado</span>
+              <p class="service-description">Recorrido guiado por los mejores spots de Lima con transporte seguro ida y vuelta incluido.</p>
+            </div>
+            <div class="service-price-section">
+              <div class="price-label">Precio por persona</div>
+              <div class="price">S/ 40</div>
+              <div class="price-subtext">40 soles peruanos</div>
+              <button class="service-button" onclick="reservarServicio('Tour Nocturno', 40)">
+                <i class="fa-solid fa-calendar-check"></i> Reservar Ahora
+              </button>
+            </div>
+          </div>
+
+          <!-- SERVICIO 2: FIESTA TEMÁTICA -->
+          <div class="service-card">
+            <div class="service-image">
+              <img src="Imagenes/Fiesta.jpg" alt="Fiesta Temática">
+            </div>
+            <div class="service-header">
+              <h2 class="service-title">Fiesta Temática</h2>
+              <span class="service-status">✓ Finalizado</span>
+              <p class="service-description">Noches temáticas exclusivas con DJ en vivo, luces especiales y ambiente inolvidable garantizado.</p>
+            </div>
+            <div class="service-price-section">
+              <div class="price-label">Precio por persona</div>
+              <div class="price">S/ 75</div>
+              <div class="price-subtext">75 soles peruanos</div>
+              <button class="service-button" onclick="reservarServicio('Fiesta Temática', 75)">
+                <i class="fa-solid fa-calendar-check"></i> Reservar Ahora
+              </button>
+            </div>
+          </div>
+
+          <!-- SERVICIO 3: BAR CRAWL -->
+          <div class="service-card">
+            <div class="service-image">
+              <img src="Imagenes/GrupoMujeres.jpg" alt="Bar Crawl">
+            </div>
+            <div class="service-header">
+              <h2 class="service-title">Bar Crawl</h2>
+              <span class="service-status">✓ Finalizado</span>
+              <p class="service-description">Recorrido por 4 bares temáticos con shots incluidos, transporte seguro y guía profesional.</p>
+            </div>
+            <div class="service-price-section">
+              <div class="price-label">Precio por persona</div>
+              <div class="price">S/ 50</div>
+              <div class="price-subtext">50 soles peruanos</div>
+              <button class="service-button" onclick="reservarServicio('Bar Crawl', 50)">
+                <i class="fa-solid fa-calendar-check"></i> Reservar Ahora
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE INFORMACIÓN -->
+    <section class="py-24 bg-gradient-to-r from-purple-900/20 to-fuchsia-900/20 border-y border-purple-700/30">
+      <div class="max-w-6xl mx-auto px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-black mb-16 font-playfair" style="font-family: 'Playfair Display', serif;">
+          🎯 ¿Cómo funciona?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="group">
+            <div class="bg-gradient-to-br from-fuchsia-600/30 to-purple-600/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
+              <i class="fa-solid fa-1 text-3xl text-fuchsia-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Elige tu Servicio</h3>
+            <p class="text-gray-300 leading-relaxed">Selecciona la experiencia que más te atrae de nuestro catálogo exclusivo</p>
+          </div>
+          <div class="group">
+            <div class="bg-gradient-to-br from-purple-600/30 to-pink-600/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
+              <i class="fa-solid fa-2 text-3xl text-purple-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Confirma tu Reserva</h3>
+            <p class="text-gray-300 leading-relaxed">Completa los detalles de tu reserva directamente por WhatsApp</p>
+          </div>
+          <div class="group">
+            <div class="bg-gradient-to-br from-pink-600/30 to-red-600/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition">
+              <i class="fa-solid fa-3 text-3xl text-pink-400"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">¡Listo!</h3>
+            <p class="text-gray-300 leading-relaxed">Recibe confirmación y prepárate para la mejor noche de tu vida</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 border-t border-purple-700/30">
+      <div class="max-w-7xl mx-auto px-8 text-center">
+        <p class="text-gray-300 mb-6 text-lg font-semibold">💬 ¿Tienes dudas? Contáctanos por WhatsApp</p>
+        <a href="https://wa.me/51999999999?text=Hola%20tengo%20una%20pregunta%20sobre%20las%20reservas" 
+           target="_blank" 
+           class="inline-block bg-gradient-to-r from-green-500 to-green-600 px-10 py-4 rounded-full font-bold hover:scale-105 transition shadow-xl text-lg">
+          <i class="fab fa-whatsapp mr-2"></i> Contactar por WhatsApp
+        </a>
+        <p class="text-gray-500 text-sm mt-12">© 2026 Lima Night Vibes • Turismo Nocturno Seguro en Lima</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      function reservarServicio(nombreServicio, precio) {
+        const mensaje = `Hola, quiero reservar para: ${nombreServicio} (S/ ${precio})`;
+        const urlWhatsapp = `https://wa.me/51999999999?text=${encodeURIComponent(mensaje)}`;
+        window.open(urlWhatsapp, '_blank');
+      }
+    </script>
+  </body>
+</html>

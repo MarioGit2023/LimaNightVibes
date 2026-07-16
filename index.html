@@ -71,11 +71,25 @@
       </div>
       
       <div class="hidden md:flex gap-8 text-sm font-medium">
-        <a href="#experiencias" class="hover:text-purple-400">Experiencias</a>
-        <a href="#portafolio" class="hover:text-purple-400">Portafolio</a>
-        <a href="#eventos" class="hover:text-purple-400">Eventos</a>
-        <a href="#testimonios" class="hover:text-purple-400">Testimonios</a>
-        <a href="#reserva" class="hover:text-purple-400">Reserva</a>
+        <a href="#experiencias" class="hover:text-purple-400 transition duration-300 relative group">
+          Experiencias
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="portfolio.html" class="hover:text-purple-400 transition duration-300 relative group">
+          Portafolio
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="eventos.html" class="hover:text-purple-400 transition duration-300 relative group">
+          Eventos
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#testimonios" class="hover:text-purple-400 transition duration-300 relative group">
+          Testimonios
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="reservas.html" class="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-2 rounded-full hover:shadow-lg hover:shadow-purple-500/50 transition duration-300">
+          Reservar
+        </a>
       </div>
 
       <button id="theme-toggle" class="p-3 rounded-full hover:bg-zinc-800">
@@ -109,9 +123,10 @@
   </section>
 
   <!-- Botón para ir a Modelo de Negocio -->
-  <div class="py-16 bg-zinc-900 text-center">
+  <div class="py-20 bg-gradient-to-r from-zinc-900 to-black text-center border-t border-purple-500/20">
+    <h3 class="text-3xl font-bold mb-6 text-purple-400">Conoce nuestro modelo</h3>
     <a href="modelo-negocio.html" 
-      class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 px-12 py-6 rounded-3xl text-xl font-bold hover:scale-105 transition shadow-xl">
+      class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 px-14 py-6 rounded-3xl text-xl font-bold hover:scale-105 transition shadow-xl hover:shadow-purple-500/50">
       Ver Modelo de Negocio →
     </a>
   </div>

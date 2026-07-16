@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Lima Night Vibes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+      
+      body {
+        font-family: Inter, sans-serif;
+        background: #0b0014;
+      }
+
+      .card img {
+        transition: .5s;
+      }
+
+      .card:hover img {
+        transform: scale(1.08);
+      }
+
+      .card .overlay {
+        opacity: 0;
+        transition: .4s;
+      }
+
+      .card:hover .overlay {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body class="text-white">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-lg z-50 border-b border-fuchsia-700">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-5">
+        <a href="index.html" class="font-black text-2xl tracking-wide">🌃 LIMA NIGHT VIBES</a>
+        <a href="index.html" class="text-fuchsia-400 hover:text-white transition">
+          <i class="fa-solid fa-arrow-left"></i> Volver
+        </a>
+      </div>
+    </nav>
+
+    <!-- TITULO -->
+    <section class="pt-36 pb-10">
+      <div class="max-w-7xl mx-auto px-8">
+        <h1 class="text-7xl font-black mb-4">Portafolio</h1>
+        <p class="text-gray-400 text-lg">Descubre todas nuestras experiencias nocturnas.</p>
+      </div>
+    </section>
+
+    <!-- GRID DE TARJETAS -->
+    <section class="pb-24">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
+          
+          <!-- TARJETA 1 -->
+          <div class="card">
+            <div class="overflow-hidden rounded-3xl relative">
+              <img src="Imagenes/a60234c6-dc3b-4750-b7f9-1b56338ebd9c.jpg" class="w-full h-72 object-cover" alt="Recorrido Aventura Urbana">
+              <div class="overlay absolute inset-0 bg-black/60 flex justify-center items-center">
+                <button class="border border-white px-6 py-3 rounded-full hover:bg-fuchsia-600 transition">Ver experiencia</button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-4">
+              <h2 class="text-3xl font-black">Recorrido Aventura Urbana</h2>
+              <span class="text-4xl font-black text-fuchsia-500">01</span>
+            </div>
+            <p class="mt-5 text-gray-300 leading-7">Una noche de exploración en bares no convencionales de Lima. Transporte seguro y guía durante todo el recorrido.</p>
+          </div>
+
+          <!-- TARJETA 2 -->
+          <div class="card">
+            <div class="overflow-hidden rounded-3xl relative">
+              <img src="Imagenes/234a8b1a-7037-4ffe-94e2-b71432d88aaf.jpg" class="w-full h-72 object-cover" alt="Circuito Gastronoche">
+              <div class="overlay absolute inset-0 bg-black/60 flex justify-center items-center">
+                <button class="border border-white px-6 py-3 rounded-full hover:bg-fuchsia-600 transition">Ver experiencia</button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-4">
+              <h2 class="text-3xl font-black">Circuito Gastronoche</h2>
+              <span class="text-4xl font-black text-fuchsia-500">02</span>
+            </div>
+            <p class="mt-5 text-gray-300 leading-7">Una combinación perfecta entre bares y gastronomía local con transporte incluido.</p>
+          </div>
+
+          <!-- TARJETA 3 -->
+          <div class="card">
+            <div class="overflow-hidden rounded-3xl relative">
+              <img src="Imagenes/b9049692-4496-4924-9485-660d686d8698.jpg" class="w-full h-72 object-cover" alt="Viaje Nocturno Económico">
+              <div class="overlay absolute inset-0 bg-black/60 flex justify-center items-center">
+                <button class="border border-white px-6 py-3 rounded-full hover:bg-fuchsia-600 transition">Ver experiencia</button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-4">
+              <h2 class="text-3xl font-black">Viaje Nocturno Económico</h2>
+              <span class="text-4xl font-black text-fuchsia-500">03</span>
+            </div>
+            <p class="mt-5 text-gray-300 leading-7">Una experiencia accesible para disfrutar la vida nocturna de Lima con seguridad.</p>
+          </div>
+
+          <!-- TARJETA 4 -->
+          <div class="card">
+            <div class="overflow-hidden rounded-3xl relative">
+              <img src="Imagenes/a85db6ac-bd35-4dd7-8bf8-9743f4be1b1d.jpg" class="w-full h-72 object-cover" alt="Experiencia de Bares Temáticos">
+              <div class="overlay absolute inset-0 bg-black/60 flex justify-center items-center">
+                <button class="border border-white px-6 py-3 rounded-full hover:bg-fuchsia-600 transition">Ver experiencia</button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-4">
+              <h2 class="text-3xl font-black">Experiencia de Bares Temáticos</h2>
+              <span class="text-4xl font-black text-fuchsia-500">04</span>
+            </div>
+            <p class="mt-5 text-gray-300 leading-7">Bares únicos de Lima seleccionados especialmente para una experiencia inolvidable.</p>
+          </div>
+
+          <!-- TARJETA 5 -->
+          <div class="card">
+            <div class="overflow-hidden rounded-3xl relative">
+              <img src="Imagenes/12dc2feb-e2b0-46c5-85e4-d9d9fed1516b.jpg" class="w-full h-72 object-cover" alt="Ruta Nocturna Clásica">
+              <div class="overlay absolute inset-0 bg-black/60 flex justify-center items-center">
+                <button class="border border-white px-6 py-3 rounded-full hover:bg-fuchsia-600 transition">Ver experiencia</button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-4">
+              <h2 class="text-3xl font-black">Ruta Nocturna Clásica</h2>
+              <span class="text-4xl font-black text-fuchsia-500">05</span>
+            </div>
+            <p class="mt-5 text-gray-300 leading-7">Tres bares emblemáticos de Lima con guía y transporte seguro.</p>
+          </div>
+
+          <!-- TARJETA 6 -->
+          <div class="card">
+            <div class="overflow-hidden rounded-3xl relative">
+              <img src="Imagenes/74d7c3ef-0d5a-4453-bd66-40962968423d.jpg" class="w-full h-72 object-cover" alt="Noche VIP Personalizada">
+              <div class="overlay absolute inset-0 bg-black/60 flex justify-center items-center">
+                <button class="border border-white px-6 py-3 rounded-full hover:bg-fuchsia-600 transition">Ver experiencia</button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-4">
+              <h2 class="text-3xl font-black">Noche VIP Personalizada</h2>
+              <span class="text-4xl font-black text-fuchsia-500">06</span>
+            </div>
+            <p class="mt-5 text-gray-300 leading-7">Servicio exclusivo con bares premium, transporte privado y atención personalizada.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

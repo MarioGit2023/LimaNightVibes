@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modelo de Negocio - Lima Night Vibes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Playfair+Display:wght@700&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+    .title-font { font-family: 'Playfair Display', sans-serif; }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #c026d3, #a855f7);
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .carousel-container {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover {
+      transition: all 0.4s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur-md z-50 border-b border-purple-500">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl">🌃</div>
+        <h1 class="text-2xl font-bold tracking-tighter">LIMA NIGHT VIBES</h1>
+      </a>
+      <a href="index.html" class="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition">
+        <i class="fas fa-arrow-left"></i> Volver al Inicio
+      </a>
+    </div>
+  </nav>
+
+  <div class="pt-28 pb-20">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <h2 class="text-6xl font-bold text-center mb-20 title-font">MODELO DE NEGOCIO</h2>
+
+      <!-- Imagen Principal -->
+      <div class="flex justify-center mb-20">
+        <img src="Imagenes/1.jpeg" 
+             alt="Modelo de Negocio" 
+             class="rounded-3xl shadow-2xl max-w-6xl w-full border border-purple-500/20">
+      </div>
+
+      <!-- Resultados de Encuesta -->
+      <div class="mb-24">
+        <h3 class="section-title text-4xl font-bold text-center mb-12">Resultados de la Encuesta del Proyecto de Inversión</h3>
+        <div id="carousel-encuesta" class="relative overflow-hidden rounded-3xl shadow-2xl">
+          <div class="flex carousel-container" id="encuesta-slides">
+            <img src="Imagenes/2.jpeg" class="w-full flex-shrink-0" alt="Encuesta 1">
+            <img src="Imagenes/PM.jpeg" class="w-full flex-shrink-0" alt="Encuesta 2">
+            <img src="Imagenes/3.jpeg" class="w-full flex-shrink-0" alt="Encuesta 3">
+            <img src="Imagenes/4.jpeg" class="w-full flex-shrink-0" alt="Encuesta 4">
+          </div>
+          <button onclick="prevSlide('encuesta')" 
+            class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black p-5 rounded-full text-3xl transition">←</button>
+          <button onclick="nextSlide('encuesta')" 
+            class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black p-5 rounded-full text-3xl transition">→</button>
+        </div>
+      </div>
+
+      <!-- Árbol de medios y fines -->
+      <div class="mb-24">
+        <h3 class="section-title text-4xl font-bold text-center mb-12">Árbol de Medios y Fines</h3>
+        <div id="carousel-arbol" class="relative overflow-hidden rounded-3xl shadow-2xl">
+          <div class="flex carousel-container" id="arbol-slides">
+            <img src="Imagenes/5.jpeg" class="w-full flex-shrink-0" alt="Árbol 1">
+            <img src="Imagenes/6.jpeg" class="w-full flex-shrink-0" alt="Árbol 2">
+          </div>
+          <button onclick="prevSlide('arbol')" class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black p-5 rounded-full text-3xl transition">←</button>
+          <button onclick="nextSlide('arbol')" class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black p-5 rounded-full text-3xl transition">→</button>
+        </div>
+      </div>
+
+      <!-- Análisis FODA -->
+      <div>
+        <h3 class="section-title text-4xl font-bold text-center mb-12">Análisis FODA</h3>
+        <div id="carousel-foda" class="relative overflow-hidden rounded-3xl shadow-2xl">
+          <div class="flex carousel-container" id="foda-slides">
+            <img src="Imagenes/7.jpeg" class="w-full flex-shrink-0" alt="FODA 1">
+            <img src="Imagenes/8.jpeg" class="w-full flex-shrink-0" alt="FODA 2">
+            <img src="Imagenes/8.jpeg" class="w-full flex-shrink-0" alt="FODA 3">
+          </div>
+          <button onclick="prevSlide('foda')" class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black p-5 rounded-full text-3xl transition">←</button>
+          <button onclick="nextSlide('foda')" class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black p-5 rounded-full text-3xl transition">→</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Carruseles independientes
+    let indices = { encuesta: 0, arbol: 0, foda: 0 };
+
+    function updateCarousel(id) {
+      const slides = document.getElementById(id + '-slides');
+      slides.style.transform = `translateX(-${indices[id] * 100}%)`;
+    }
+
+    function nextSlide(type) {
+      indices[type] = (indices[type] + 1) % document.getElementById(type + '-slides').children.length;
+      updateCarousel(type);
+    }
+
+    function prevSlide(type) {
+      indices[type] = (indices[type] - 1 + document.getElementById(type + '-slides').children.length) % document.getElementById(type + '-slides').children.length;
+      updateCarousel(type);
+    }
+  </script>
+</body>
+</html>

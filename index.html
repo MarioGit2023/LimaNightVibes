@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lima Night Vibes | Rutas Nocturnas Seguras</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Playfair+Display:wght@700&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+    .title-font { font-family: 'Playfair Display', sans-serif; }
+    .neon-text { text-shadow: 0 0 15px #c026d3, 0 0 30px #c026d3; }
+
+    /* Animaciones de Scroll */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-hover:hover { 
+      transform: translateY(-12px) scale(1.04); 
+      transition: all 0.4s ease; 
+    }
+    
+    .video-container {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white transition-colors duration-300">
+
+  <!-- NAVBAR (sin cambios) -->
+  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-md z-50 border-b border-purple-500">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-2xl">🌃</div>
+        <h1 class="text-2xl font-bold tracking-tighter">LIMA NIGHT VIBES</h1>
+      </div>
+      
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#experiencias" class="hover:text-purple-400">Experiencias</a>
+        <a href="#portafolio" class="hover:text-purple-400">Portafolio</a>
+        <a href="#eventos" class="hover:text-purple-400">Eventos</a>
+        <a href="#testimonios" class="hover:text-purple-400">Testimonios</a>
+        <a href="#reserva" class="hover:text-purple-400">Reserva</a>
+      </div>
+
+      <button id="theme-toggle" class="p-3 rounded-full hover:bg-zinc-800">
+        <i class="fas fa-moon text-xl"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio" class="min-h-screen bg-zinc-950 flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8 animate-on-scroll">
+        <h1 class="text-6xl md:text-7xl font-black title-font leading-none tracking-tighter neon-text">
+          RUTAS NOCTURNAS<br>SEGURAS EN LIMA
+        </h1>
+        <p class="text-xl text-gray-300 max-w-md">
+          Tu agencia especializada en diversión organizada: transporte seguro ida y vuelta a los mejores bares temáticos.
+        </p>
+        <button onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})" 
+          class="bg-gradient-to-r from-purple-600 to-pink-600 px-10 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition">
+          RESERVAR AHORA
+        </button>
+      </div>
+
+      <div class="hidden md:block animate-on-scroll">
+        <img src="Imagenes/HombreNight.jpg" 
+             alt="Lima Night Vibes" 
+             class="rounded-3xl shadow-2xl shadow-purple-500/30 w-full h-auto object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón para ir a Modelo de Negocio -->
+  <div class="py-16 bg-zinc-900 text-center">
+    <a href="modelo-negocio.html" 
+      class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 px-12 py-6 rounded-3xl text-xl font-bold hover:scale-105 transition shadow-xl">
+      Ver Modelo de Negocio →
+    </a>
+  </div>
+
+  <!-- NUESTRAS EXPERIENCIAS -->
+  <section id="experiencias" class="py-20 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16 title-font animate-on-scroll">Nuestras Experiencias</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div onclick="showExperience(1)" class="bg-zinc-800 rounded-3xl overflow-hidden cursor-pointer card-hover animate-on-scroll">
+          <img src="Imagenes/GrupoHablando.jpg" class="w-full h-64 object-cover" alt="Tour Nocturno"/>
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Tour Nocturno</h3>
+            <p class="text-gray-400 mt-3">Recorrido por los mejores spots de Lima con transporte y guía.</p>
+          </div>
+        </div>
+
+        <div onclick="showExperience(2)" class="bg-zinc-800 rounded-3xl overflow-hidden cursor-pointer card-hover animate-on-scroll">
+          <img src="Imagenes/Fiesta.jpg" class="w-full h-64 object-cover" alt="Fiesta Temática"/>
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Fiesta Temática</h3>
+            <p class="text-gray-400 mt-3">Noches temáticas con DJ, dress code y ambiente exclusivo.</p>
+          </div>
+        </div>
+
+        <div onclick="showExperience(3)" class="bg-zinc-800 rounded-3xl overflow-hidden cursor-pointer card-hover animate-on-scroll">
+          <img src="Imagenes/GrupoMujeres.jpg" class="w-full h-64 object-cover" alt="Bar Crawl"/>
+          <div class="p-8">
+            <h3 class="text-3xl font-bold">Bar Crawl</h3>
+            <p class="text-gray-400 mt-3">Recorrido por 4-5 bares temáticos con shots incluidos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="py-20 bg-black">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-10 title-font animate-on-scroll">Vive la experiencia</h2>
+      <div class="video-container animate-on-scroll">
+        <video width="100%" height="350" controls poster="Imagenes/12dc2feb-e2b0-46c5-85e4-d9d9fed1516b.jpg" class="rounded-3xl shadow-2xl">
+          <source src="Videos/LimaVibes.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS + FORMULARIO + RESERVA -->
+  <section id="testimonios" class="py-20 bg-zinc-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-16 title-font animate-on-scroll">Lo que dicen nuestros clientes</h2>
+      <div id="testimonial-container" class="animate-on-scroll"></div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO DE PREGUNTAS -->
+  <section class="py-20 bg-purple-900">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6 title-font animate-on-scroll">¿Cómo fue tu experiencia?</h2>
+      <p class="text-gray-300 mb-10 text-lg animate-on-scroll">Ayúdanos a mejorar respondiendo unas preguntas rápidas</p>
+      <a href="https://docs.google.com/forms/d/14SVLkXXFr19n7buTEHkVFFn60KEVNerwJ_TJa-tBq0Y/viewform" 
+         target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 px-12 py-6 rounded-3xl text-xl font-bold hover:scale-105 transition animate-on-scroll">
+        RESPONDER ENCUESTA
+      </a>
+    </div>
+  </section>
+
+  <!-- RESERVA -->
+  <section id="reserva" class="py-24 bg-gradient-to-br from-zinc-900 to-black">
+    <div class="max-w-2xl mx-auto px-6 animate-on-scroll">
+      <h2 class="text-5xl font-bold text-center mb-12">Reserva tu Experiencia</h2>
+      <form id="reserva-form" class="bg-zinc-900 p-10 rounded-3xl space-y-8">
+        <input type="text" id="nombre" placeholder="Nombre completo" required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"/>
+        <div class="grid grid-cols-2 gap-6">
+          <input type="date" id="fecha" required class="bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"/>
+          <input type="time" id="hora" required class="bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"/>
+        </div>
+        <select id="ruta" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4">
+          <option>Tour Nocturno</option>
+          <option>Fiesta Temática</option>
+          <option>Bar Crawl</option>
+        </select>
+        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 py-6 rounded-3xl text-xl font-bold">CONFIRMAR RESERVA</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- WHATSAPP + FOOTER -->
+  <a href="https://wa.me/51999999999?text=Hola%20quiero%20información" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer class="bg-black py-12 text-center">
+    <p>© 2026 Lima Night Vibes • Turismo Nocturno Seguro en Lima</p>
+  </footer>
+
+  <script>
+    // ==================== ANIMACIONES MEJORADAS ====================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          // Opcional: quitar la clase al salir (para que se vuelva a animar al bajar de nuevo)
+          // entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.2,     // Se activa cuando el 20% del elemento es visible
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    // Aplicar el observer a todos los elementos con animación
+    function initAnimations() {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Inicializar animaciones cuando cargue la página
+    window.addEventListener('load', initAnimations);
+
+    // ==================== RESTO DE FUNCIONALIDADES ====================
+    // Modo Claro/Oscuro
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('bg-white');
+      document.body.classList.toggle('text-zinc-900');
+    });
+
+    // Carrusel de Testimonios
+    const testimonials = [
+      { text: "¡La mejor decisión! Me sentí seguro y la pasé increíble.", name: "Diego Morales, 24" },
+      { text: "El transporte y la organización son impecables. 10/10", name: "Valeria Torres, 22" },
+      { text: "Repetiré seguro. El Bar Crawl fue una locura.", name: "Carlos Ruiz, 27" }
+    ];
+
+    let current = 0;
+    const container = document.getElementById('testimonial-container');
+
+    function showTestimonial() {
+      container.innerHTML = `
+        <p class="text-2xl italic mb-6">"${testimonials[current].text}"</p>
+        <p class="font-semibold">- ${testimonials[current].name}</p>
+      `;
+      current = (current + 1) % testimonials.length;
+    }
+
+    setInterval(showTestimonial, 5000);
+    showTestimonial();
+
+    // Formulario de Reserva
+    document.getElementById('reserva-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('✅ Reserva recibida! Te contactaremos por WhatsApp en minutos.');
+      e.target.reset();
+    });
+
+    function showExperience(n) {
+      const titles = ["Tour Nocturno", "Fiesta Temática", "Bar Crawl"];
+      alert(`Has seleccionado: ${titles[n-1]}\n\nPronto tendrás una página dedicada.`);
+    }
+  </script>
+</body>
+</html>
